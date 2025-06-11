@@ -5,12 +5,9 @@ using namespace std;
 
 int main() {
     int y, temp, v, w, z;
-    int* x; // Deklarasi pointer untuk array dinamis
+    int x[9]; 
 
     z = 8;
-    x = new int[z + 1]; // Alokasi array dinamis ukuran z+1 (indeks 0 sampai 8)
-
-    // Inisialisasi data
     x[1] = 9;
     x[2] = 2;
     x[3] = 1;
@@ -56,8 +53,6 @@ int main() {
         w++;
     }
     cout << endl;
-
-    delete[] x; // Dealokasi memori array dinamis
 
     return 0;
 }
