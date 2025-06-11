@@ -1,67 +1,63 @@
 #include <iostream>
+#include <string>
+
 using namespace std;
 
-int main()
-{
-   int y;
-   int temp;
-   int v;
-   int w;
-   int z;
-   int x[9]; 
+int main() {
+    int y, temp, v, w, z;
+    int* x; // Deklarasi pointer untuk array dinamis
 
-   z = 8;
-   x[1] = 9;
-   x[2] = 2;
-   x[3] = 1;
-   x[4] = 4;
-   x[5] = 11;
-   x[6] = 10;
-   x[7] = 18;
-   x[8] = 6;
+    z = 8;
+    x = new int[z + 1]; // Alokasi array dinamis ukuran z+1 (indeks 0 sampai 8)
 
-   cout << "Data Belum Terurut:" << endl;
-   w = 1;
-   while (w <= z)
-   {
-      cout << x[w] << " ";
-      w = w + 1;
-   }
-   cout << endl;
+    // Inisialisasi data
+    x[1] = 9;
+    x[2] = 2;
+    x[3] = 1;
+    x[4] = 4;
+    x[5] = 11;
+    x[6] = 10;
+    x[7] = 18;
+    x[8] = 6;
 
-   v = 1;
-   while (v <= z - 1)
-   {
-      cout << "(Langkah ke-" << v << ") - " << endl;
-      y = z;
-      while (y >= v + 1)
-      {
-         if (x[y] < x[y - 1])
-         {
-            temp = x[y];
-            x[y] = x[y - 1];
-            x[y - 1] = temp;
-         }
-         y = y - 1;
-      }
-      w = 1;
-      while (w <= z)
-      {
-         cout << x[w] << " ";
-         w = w + 1;
-      }
-      cout << endl;
-      v = v + 1;
-   }
+    cout << "Data Belum Terurut:" << endl;
+    w = 1;
+    while (w <= z) {
+        cout << x[w] << " ";
+        w++;
+    }
+    cout << endl << endl;
 
-   cout << "Data Telah Terurut:" << endl;
-   w = 1;
-   while (w <= z)
-   {
-      cout << x[w] << " ";
-      w = w + 1;
-   }
-   cout << endl;
+    v = 1;
+    while (v <= z - 1) {
+        cout << "(Langkah ke-" << v << ") - " << endl;
+        y = z;
+        while (y >= v + 1) {
+            if (x[y] < x[y - 1]) {
+                temp = x[y];
+                x[y] = x[y - 1];
+                x[y - 1] = temp;
+            }
+            y--;
+        }
+        w = 1;
+        while (w <= z) {
+            cout << x[w] << " ";
+            w++;
+        }
+        cout << endl;
+        v++;
+    }
 
-   return 0;
+    cout << endl << "Data Telah Terurut:" << endl;
+    w = 1;
+    while (w <= z) {
+        cout << x[w] << " ";
+        w++;
+    }
+    cout << endl;
+
+    delete[] x; // Dealokasi memori array dinamis
+
+    return 0;
 }
